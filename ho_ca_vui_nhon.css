@@ -1,0 +1,83 @@
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#061d35;color:#fff}
+body{padding:24px 14px}
+.page{max-width:1100px;margin:auto}
+h1{text-align:center;margin:0 0 8px;font-size:clamp(24px,4vw,38px);letter-spacing:1px}
+.sub{text-align:center;color:#c8e9f5;margin:0 0 20px;font-size:14px}
+.aquarium{
+ position:relative;height:min(650px,72vh);min-height:420px;overflow:hidden;
+ border:7px solid #b7e8f3;border-radius:18px;
+ background:
+   radial-gradient(ellipse at 20% 15%,#b7f3ff55 0 2px,transparent 3px),
+   radial-gradient(ellipse at 75% 35%,#b7f3ff44 0 3px,transparent 4px),
+   linear-gradient(180deg,#087ca9 0%,#075b88 48%,#06365e 100%);
+ box-shadow:0 18px 50px #0008,inset 0 0 35px #b4f1ff55;
+}
+.aquarium:before{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+ background:repeating-linear-gradient(105deg,transparent 0 75px,#b5f7ff18 76px 79px,transparent 80px 150px);
+ animation:waterlight 9s linear infinite;
+}
+.aquarium:after{
+ content:"";position:absolute;left:-5%;right:-5%;bottom:-28px;height:100px;
+ background:linear-gradient(180deg,#b1a16b,#75663e 45%,#403c2b);
+ border-radius:50% 50% 0 0 / 25% 25% 0 0;
+ box-shadow:0 -12px 28px #b3eaff22;
+}
+@keyframes waterlight{from{transform:translateX(-7%)}to{transform:translateX(7%)}}
+.creature{position:absolute;z-index:2;user-select:none;pointer-events:none}
+.creature img{display:block;width:100%;height:auto}
+.diver{width:clamp(150px,25vw,230px);left:-260px;animation:diver-swim 24s linear infinite, bob 3.8s ease-in-out infinite}
+.diver.one{top:17%;animation-delay:0s,0s}
+.diver.two{top:48%;animation-delay:7s,-1s}
+.diver.three{top:70%;animation-delay:14s,-2s}
+@keyframes diver-swim{
+ 0%{left:-260px;transform:scaleX(1)}
+ 48%{left:calc(100% - 210px);transform:scaleX(1)}
+ 52%{left:calc(100% - 210px);transform:scaleX(-1)}
+ 98%{left:-260px;transform:scaleX(-1)}
+ 100%{left:-260px;transform:scaleX(1)}
+}
+@keyframes bob{0%,100%{margin-top:0}50%{margin-top:22px}}
+.shark{width:clamp(150px,23vw,220px);top:10%;left:-250px;animation:shark-move 30s linear infinite}
+@keyframes shark-move{
+ 0%{left:-250px;transform:scaleX(1)}
+ 49%{left:calc(100% - 200px);transform:scaleX(1)}
+ 51%{left:calc(100% - 200px);transform:scaleX(-1)}
+ 99%{left:-250px;transform:scaleX(-1)}
+ 100%{left:-250px;transform:scaleX(1)}
+}
+.turtle{width:clamp(100px,16vw,155px);top:35%;left:-180px;animation:turtle-move 36s linear infinite}
+@keyframes turtle-move{
+ 0%{left:-180px;transform:scaleX(1)}
+ 49%{left:calc(100% - 145px);transform:scaleX(1)}
+ 51%{left:calc(100% - 145px);transform:scaleX(-1)}
+ 99%{left:-180px;transform:scaleX(-1)}
+ 100%{left:-180px;transform:scaleX(1)}
+}
+.fish{width:clamp(90px,13vw,125px);top:56%;left:-140px;animation:fish-move 17s linear infinite}
+@keyframes fish-move{
+ 0%{left:-140px;transform:scaleX(1)}
+ 49%{left:calc(100% - 120px);transform:scaleX(1)}
+ 51%{left:calc(100% - 120px);transform:scaleX(-1)}
+ 99%{left:-140px;transform:scaleX(-1)}
+ 100%{left:-140px;transform:scaleX(1)}
+}
+.plankton{width:clamp(140px,20vw,205px);top:27%;left:38%;animation:drift 8s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,-18px)}}
+.bubble{position:absolute;z-index:1;bottom:-30px;width:10px;height:10px;border:2px solid #d9faff99;border-radius:50%;animation:rise linear infinite}
+.b1{left:12%;animation-duration:9s}.b2{left:28%;width:7px;height:7px;animation-duration:12s;animation-delay:2s}
+.b3{left:63%;width:14px;height:14px;animation-duration:10s;animation-delay:1s}
+.b4{left:83%;width:8px;height:8px;animation-duration:13s;animation-delay:4s}
+@keyframes rise{from{bottom:-25px;opacity:0;transform:translateX(0)}15%{opacity:1}to{bottom:105%;opacity:0;transform:translateX(35px)}}
+.seaweed{position:absolute;z-index:1;bottom:42px;width:35px;height:115px;border-left:9px solid #347c4b;border-radius:50%;transform:rotate(10deg)}
+.seaweed:after{content:"";position:absolute;left:5px;top:28px;width:26px;height:48px;border-left:8px solid #4c9a5a;border-radius:50%;transform:rotate(-25deg)}
+.w1{left:5%}.w2{left:90%;transform:scale(1.2) rotate(-12deg)}
+.caption{text-align:center;color:#d9f6ff;font-size:13px;margin:13px 0 0}
+@media(max-width:600px){
+ body{padding:12px 8px}.aquarium{height:70vh;min-height:430px;border-width:4px}
+ .diver.one{top:18%}.diver.two{top:48%}.diver.three{top:72%}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:0.01ms!important;animation-iteration-count:1!important}
+}
